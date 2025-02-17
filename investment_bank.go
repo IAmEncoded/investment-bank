@@ -18,7 +18,7 @@ func main() {
 		fmt.Println("-------")
 		panic(err)
 	}
-	
+
 	var depositAmount float64
 	var withdrawlAmmount float64
 
@@ -26,8 +26,6 @@ func main() {
 	fmt.Println("Reach us 24/7:", randomdata.PhoneNumber())
 
 	for {
-		presentOptions()
-
 		var choice int
 		fmt.Print("Your choice: ")
 		fmt.Scan(&choice)
@@ -38,33 +36,33 @@ func main() {
 		case 2:
 			fmt.Print("Input the amount you want to deposit: ")
 			fmt.Scan(&depositAmount)
-	
+
 			if depositAmount <= 0 {
 				fmt.Println("Invalid amount. Must be greater than 0.")
 				continue
 			}
-	
+
 			accountBalance += depositAmount
-	
+
 			fmt.Println("Updated balance:", accountBalance)
 
 			fileops.WriteFloatToFile(accountBalance, accountBalanceFile)
 		case 3:
 			fmt.Print("Withdrawl ammount: ")
 			fmt.Scan(&withdrawlAmmount)
-			
+
 			if withdrawlAmmount <= 0 {
 				fmt.Println("Invalid amount. Must be greater than 0.")
 				continue
 			}
-	
+
 			if withdrawlAmmount > accountBalance {
 				fmt.Println("You cannot withdraw more money than is in your account.")
 				continue
 			}
-	
+
 			accountBalance -= withdrawlAmmount
-			
+
 			fmt.Println("Updated balance:", accountBalance)
 			fileops.WriteFloatToFile(accountBalance, accountBalanceFile)
 		default:
